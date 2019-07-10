@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.example.burgisbapperl;
+package net.lorenzburghardt.burgisbapperl;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;

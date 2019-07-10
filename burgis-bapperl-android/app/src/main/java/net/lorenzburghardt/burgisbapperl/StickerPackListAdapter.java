@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.example.burgisbapperl;
+package net.lorenzburghardt.burgisbapperl;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.burgisbapperl.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;

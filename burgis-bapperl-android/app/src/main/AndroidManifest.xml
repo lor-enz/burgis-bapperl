@@ -8,39 +8,39 @@
         android:fullBackupContent="false"
         android:icon="@mipmap/bapperl_icon"
         android:label="@string/app_name"
-        android:name="com.example.burgisbapperl.StickerApplication"
+        android:name="net.lorenzburghardt.burgisbapperl.StickerApplication"
         android:roundIcon="@mipmap/bapperl_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.burgisbapperl.EntryActivity">
+        <activity android:name="net.lorenzburghardt.burgisbapperl.EntryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.burgisbapperl.StickerPackListActivity"/>
+            android:name="net.lorenzburghardt.burgisbapperl.StickerPackListActivity"/>
         <activity
-            android:name="com.example.burgisbapperl.StickerPackDetailsActivity"
-            android:parentActivityName="com.example.burgisbapperl.StickerPackListActivity"
+            android:name="net.lorenzburghardt.burgisbapperl.StickerPackDetailsActivity"
+            android:parentActivityName="net.lorenzburghardt.burgisbapperl.StickerPackListActivity"
             tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.burgisbapperl.StickerPackListActivity" />
+                android:value="net.lorenzburghardt.burgisbapperl.StickerPackListActivity" />
         </activity>
         <activity
-            android:name="com.example.burgisbapperl.StickerPackInfoActivity"
+            android:name="net.lorenzburghardt.burgisbapperl.StickerPackInfoActivity"
             android:label="@string/title_activity_sticker_pack_info"
-            android:parentActivityName="com.example.burgisbapperl.StickerPackDetailsActivity"
+            android:parentActivityName="net.lorenzburghardt.burgisbapperl.StickerPackDetailsActivity"
             tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.burgisbapperl.StickerPackDetailsActivity" />
+                android:value="net.lorenzburghardt.burgisbapperl.StickerPackDetailsActivity" />
         </activity>
 
         <provider
-            android:name="com.example.burgisbapperl.StickerContentProvider"
+            android:name="net.lorenzburghardt.burgisbapperl.StickerContentProvider"
             android:authorities="${contentProviderAuthority}"
             android:enabled="true"
             android:exported="true"

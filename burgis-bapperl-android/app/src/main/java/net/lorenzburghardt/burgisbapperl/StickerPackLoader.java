@@ -6,13 +6,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.example.burgisbapperl;
+package net.lorenzburghardt.burgisbapperl;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+
+import com.example.burgisbapperl.BuildConfig;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -22,18 +24,18 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.example.burgisbapperl.StickerContentProvider.ANDROID_APP_DOWNLOAD_LINK_IN_QUERY;
-import static com.example.burgisbapperl.StickerContentProvider.IOS_APP_DOWNLOAD_LINK_IN_QUERY;
-import static com.example.burgisbapperl.StickerContentProvider.LICENSE_AGREENMENT_WEBSITE;
-import static com.example.burgisbapperl.StickerContentProvider.PRIVACY_POLICY_WEBSITE;
-import static com.example.burgisbapperl.StickerContentProvider.PUBLISHER_EMAIL;
-import static com.example.burgisbapperl.StickerContentProvider.PUBLISHER_WEBSITE;
-import static com.example.burgisbapperl.StickerContentProvider.STICKER_FILE_EMOJI_IN_QUERY;
-import static com.example.burgisbapperl.StickerContentProvider.STICKER_FILE_NAME_IN_QUERY;
-import static com.example.burgisbapperl.StickerContentProvider.STICKER_PACK_ICON_IN_QUERY;
-import static com.example.burgisbapperl.StickerContentProvider.STICKER_PACK_IDENTIFIER_IN_QUERY;
-import static com.example.burgisbapperl.StickerContentProvider.STICKER_PACK_NAME_IN_QUERY;
-import static com.example.burgisbapperl.StickerContentProvider.STICKER_PACK_PUBLISHER_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.ANDROID_APP_DOWNLOAD_LINK_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.IOS_APP_DOWNLOAD_LINK_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.LICENSE_AGREENMENT_WEBSITE;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.PRIVACY_POLICY_WEBSITE;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.PUBLISHER_EMAIL;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.PUBLISHER_WEBSITE;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_FILE_EMOJI_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_FILE_NAME_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_PACK_ICON_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_PACK_IDENTIFIER_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_PACK_NAME_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_PACK_PUBLISHER_IN_QUERY;
 
 public class StickerPackLoader {
 

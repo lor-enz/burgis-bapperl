@@ -6,9 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.example.burgisbapperl;
+package net.lorenzburghardt.burgisbapperl;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -20,6 +19,9 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.burgisbapperl.BuildConfig;
+import com.example.burgisbapperl.R;
 
 public abstract class AddStickerPackActivity extends BaseActivity {
     public static final int ADD_PACK = 200;
@@ -85,7 +87,7 @@ public abstract class AddStickerPackActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PACK) {
-            if (resultCode == Activity.RESULT_CANCELED) {
+            if (resultCode == RESULT_CANCELED) {
                 if (data != null) {
                     final String validationError = data.getStringExtra("validation_error");
                     if (validationError != null) {

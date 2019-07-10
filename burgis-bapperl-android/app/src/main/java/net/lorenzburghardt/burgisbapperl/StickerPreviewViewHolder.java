@@ -6,11 +6,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.example.burgisbapperl;
+package net.lorenzburghardt.burgisbapperl;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.burgisbapperl.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 public class StickerPreviewViewHolder extends RecyclerView.ViewHolder {

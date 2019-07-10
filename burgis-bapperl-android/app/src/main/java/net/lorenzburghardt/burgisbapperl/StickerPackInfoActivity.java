@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.example.burgisbapperl;
+package net.lorenzburghardt.burgisbapperl;
 
 import android.content.Intent;
 import android.graphics.Rect;
@@ -21,6 +21,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.burgisbapperl.R;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

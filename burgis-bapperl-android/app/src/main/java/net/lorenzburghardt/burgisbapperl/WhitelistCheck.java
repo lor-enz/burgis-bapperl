@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-package com.example.burgisbapperl;
+package net.lorenzburghardt.burgisbapperl;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -16,6 +16,8 @@ import android.content.pm.ProviderInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+
+import com.example.burgisbapperl.BuildConfig;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class WhitelistCheck {
