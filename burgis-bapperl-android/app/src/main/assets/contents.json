@@ -1,0 +1,63 @@
+{
+  "android_play_store_link": "",
+  "ios_app_store_link": "",
+  "sticker_packs": [
+    {
+      "identifier": "1",
+      "name": "Burgis Bapperl",
+      "publisher": "The nice Penguin",
+      "tray_image_file": "penguin-eis.png",
+      "publisher_email":"sticker@lorenz-burghardt.net",
+      "publisher_website": "",
+      "privacy_policy_website": "",
+      "license_agreement_website": "",
+      "stickers": [
+        {
+          "image_file": "1penguin-hello.webp",
+          "emojis": ["👋","😊"]
+        },
+        {
+          "image_file": "penguin-thinking.webp",
+          "emojis": ["🤔"]
+        },
+        {
+          "image_file": "penguin-yay.webp",
+          "emojis": ["😄","😃"]
+        },
+        {
+          "image_file": "penguin-sleeping.webp",
+          "emojis": ["🐧"]
+        },
+        {
+          "image_file": "penguin-bro.webp",
+          "emojis": ["💪"]
+        },
+        {
+          "image_file": "penguin-diver.webp",
+          "emojis": ["🐟","🐠"]
+        },
+        {
+          "image_file": "penguin-eis.webp",
+          "emojis": ["🍧","🍦"]
+        },
+
+        {
+          "image_file": "penguin-panic.webp",
+          "emojis": ["😱","😰"]
+        },
+        {
+          "image_file": "penguin-rain.webp",
+          "emojis": ["😊","🌧","☔"]
+        },
+        {
+          "image_file": "penguin-scream.webp",
+          "emojis": ["😱","😰"]
+        },
+        {
+          "image_file": "penguin-study.webp",
+          "emojis": ["📚","🤓"]
+        }
+      ]
+    }
+  ]
+}
