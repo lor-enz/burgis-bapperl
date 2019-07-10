@@ -3,7 +3,7 @@
   "ios_app_store_link": "",
   "sticker_packs": [
     {
-      "identifier": "1",
+      "identifier": "penguins",
       "name": "Burgis Bapperl",
       "publisher": "The nice Penguin",
       "tray_image_file": "penguin-eis.png",

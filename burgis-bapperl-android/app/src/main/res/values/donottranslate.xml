@@ -1,6 +1,6 @@
 <resources>
     <!-- The divider between sticker pack publisher and the sticker pack size -->
-    <string name="dot">•</string>
-    <string name="error_message">Error: %s \nSee logcat for stack trace.</string>
+    <string name="dot" translatable="false">•</string>
+    <string name="error_message" translatable="false">Error: %s  See logcat for stack trace.</string>
     <string name="title_validation_error">Error with the pack</string>
 </resources>

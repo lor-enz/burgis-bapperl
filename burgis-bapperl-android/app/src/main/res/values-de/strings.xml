@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Burgis Bapperl - WAStickerApps</string>
+    <string name="add_button_content_description">Sticker Paket zu WhatsApp hinzufügen</string>
+    <string name="add_pack_fail_prompt_update_play_link">Aktualiseren</string>
+    <string name="add_to_whatsapp">Zu WhatsApp hinzufügen</string>
+    <string name="cannot_find_play_store">Google Play fehlt auf diesem Gerät</string>
+    <string name="details_pack_already_added">Paket zu WhatsApp hinzugefügt</string>
+    <string name="info_screen_tray_icon">Tray icon</string>
+    <string name="info_send_email_to_prompt">Sende email über</string>
+    <string name="view_webpage">Besuche Website</string>
+    <string name="title_activity_sticker_pack_details_multiple_pack">Sticker details</string>
+    <string name="title_activity_sticker_pack_info">Info</string>
+    <string name="title_validation_error">Fehler mit dem Paket</string>
+    <string name="add_pack_fail_prompt_update_whatsapp">Sticker Paket nicht hinzugefügt. Stelle sicher dass die neueste Version von WhatsApp installiert ist, um das Paket hinzuzufügen.</string>
+    <string name="license_agreement">Lizenzvereinbarung</string>
+    <string name="privacy_policy">Datenschutzbestimmungen</string>
+    <string name="more_info_button">Mehr Informationen zum Sticker Paket</string>
+    <string name="send_email">Sende email</string>
+    <string name="tray_image_content_description">Sticker Paket Tray Bild</string>
+</resources>
