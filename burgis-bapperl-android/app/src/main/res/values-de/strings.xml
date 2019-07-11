@@ -16,6 +16,6 @@
     <string name="license_agreement">Lizenzvereinbarung</string>
     <string name="privacy_policy">Datenschutzbestimmungen</string>
     <string name="more_info_button">Mehr Informationen zum Sticker Paket</string>
-    <string name="send_email">Sende email</string>
+    <string name="send_email">Email senden</string>
     <string name="tray_image_content_description">Sticker Paket Tray Bild</string>
 </resources>

@@ -1,11 +1,11 @@
 {
-  "android_play_store_link": "",
+  "android_play_store_link": "https://play.google.com/store/apps/details?id=net.lorenzburghardt.burgisbapperl",
   "ios_app_store_link": "",
   "sticker_packs": [
     {
       "identifier": "penguins",
-      "name": "Burgis Bapperl",
-      "publisher": "The nice Penguin",
+      "name": "Burgis Pinguine",
+      "publisher": "lor-enz",
       "tray_image_file": "penguin-eis.png",
       "publisher_email":"sticker@lorenz-burghardt.net",
       "publisher_website": "",

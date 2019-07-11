@@ -6,4 +6,7 @@
     <color name="inactiveAddButtonColor">#B3B3B3</color>
     <color name="infoPageBackgroundColor">#EBEBEB</color>
     <color name="actionBarArrowColor">@color/colorAccent</color>
+
+    <color name="wa_green">#39e158</color>
+
 </resources>
