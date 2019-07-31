@@ -13,12 +13,20 @@
       "license_agreement_website": "",
       "stickers": [
         {
-          "image_file": "1penguin-hello.webp",
+          "image_file": "penguin-standard.webp",
+          "emojis": ["😊"]
+        },
+        {
+          "image_file": "penguin-hello.webp",
           "emojis": ["👋","😊"]
         },
         {
           "image_file": "penguin-thinking.webp",
           "emojis": ["🤔"]
+        },
+        {
+          "image_file": "penguin-thumbs-up.webp",
+          "emojis": ["👍"]
         },
         {
           "image_file": "penguin-yay.webp",
@@ -55,6 +63,10 @@
         {
           "image_file": "penguin-study.webp",
           "emojis": ["📚","🤓"]
+        },
+        {
+          "image_file": "penguin-with-cat.webp",
+          "emojis": ["🐈","😸"]
         }
       ]
     }
