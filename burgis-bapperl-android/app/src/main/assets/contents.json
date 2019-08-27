@@ -83,6 +83,25 @@
             "🌧",
             "☔"
           ]
+        },
+        {
+          "image_file": "12penguin-standard.webp",
+          "emojis": [
+            "😊"
+          ]
+        },
+        {
+          "image_file": "13penguin-thumbs-up.webp",
+          "emojis": [
+            "👍"
+          ]
+        },
+        {
+          "image_file": "14penguin-with-cat.webp",
+          "emojis": [
+            "🐈",
+            "😸"
+          ]
         }
       ]
     }
