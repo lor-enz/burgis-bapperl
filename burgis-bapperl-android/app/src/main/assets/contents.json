@@ -6,55 +6,83 @@
       "identifier": "penguins",
       "name": "Burgis Pinguine",
       "publisher": "lor-enz",
-      "tray_image_file": "penguin-eis.png",
-      "publisher_email":"sticker@lorenz-burghardt.net",
+      "tray_image_file": "tray-penguin-eis.png",
+      "publisher_email": "sticker@lorenz-burghardt.net",
       "publisher_website": "",
       "privacy_policy_website": "",
       "license_agreement_website": "",
       "stickers": [
         {
           "image_file": "1penguin-hello.webp",
-          "emojis": ["👋","😊"]
+          "emojis": [
+            "👋",
+            "😊"
+          ]
         },
         {
-          "image_file": "penguin-thinking.webp",
-          "emojis": ["🤔"]
+          "image_file": "2penguin-thinking.webp",
+          "emojis": [
+            "🤔"
+          ]
         },
         {
-          "image_file": "penguin-yay.webp",
-          "emojis": ["😄","😃"]
+          "image_file": "3penguin-sleeping.webp",
+          "emojis": [
+            "😴"
+          ]
         },
         {
-          "image_file": "penguin-sleeping.webp",
-          "emojis": ["😴"]
+          "image_file": "4penguin-bro.webp",
+          "emojis": [
+            "💪"
+          ]
         },
         {
-          "image_file": "penguin-bro.webp",
-          "emojis": ["💪"]
+          "image_file": "5penguin-eis.webp",
+          "emojis": [
+            "🍧",
+            "🍦"
+          ]
         },
         {
-          "image_file": "penguin-diver.webp",
-          "emojis": ["🐟","🐠"]
+          "image_file": "6penguin-panic.webp",
+          "emojis": [
+            "😰"
+          ]
         },
         {
-          "image_file": "penguin-eis.webp",
-          "emojis": ["🍧","🍦"]
+          "image_file": "7penguin-study.webp",
+          "emojis": [
+            "📚",
+            "🤓"
+          ]
         },
         {
-          "image_file": "penguin-panic.webp",
-          "emojis": ["😰"]
+          "image_file": "8penguin-yay.webp",
+          "emojis": [
+            "😄",
+            "😃"
+          ]
         },
         {
-          "image_file": "penguin-rain.webp",
-          "emojis": ["🌧","☔"]
+          "image_file": "9penguin-scream.webp",
+          "emojis": [
+            "😱"
+          ]
         },
         {
-          "image_file": "penguin-scream.webp",
-          "emojis": ["😱"]
+          "image_file": "10penguin-diver.webp",
+          "emojis": [
+            "🐟",
+            "🐠"
+          ]
         },
         {
-          "image_file": "penguin-study.webp",
-          "emojis": ["📚","🤓"]
+          "image_file": "11penguin-rain.webp",
+          "emojis": [
+            "🌧",
+            "☔"
+          ]
         }
       ]
     }
