@@ -71,6 +71,7 @@ class ContentFileParser {
         String publisher = null;
         String trayImageFile = null;
         String publisherEmail = null;
+        String telegramLink = null;
         String publisherWebsite = null;
         String privacyPolicyWebsite = null;
         String licenseAgreementWebsite = null;
@@ -92,6 +93,9 @@ class ContentFileParser {
                     break;
                 case "publisher_email":
                     publisherEmail = reader.nextString();
+                    break;
+                case "telegram_link":
+                    telegramLink = reader.nextString();
                     break;
                 case "publisher_website":
                     publisherWebsite = reader.nextString();
@@ -128,7 +132,8 @@ class ContentFileParser {
             throw new IllegalStateException("identifier should not contain .. or / to prevent directory traversal");
         }
         reader.endObject();
-        final StickerPack stickerPack = new StickerPack(identifier, name, publisher, trayImageFile, publisherEmail, publisherWebsite, privacyPolicyWebsite, licenseAgreementWebsite);
+        final StickerPack stickerPack = new StickerPack(identifier, name, publisher, trayImageFile, publisherEmail, publisherWebsite, privacyPolicyWebsite, licenseAgreementWebsite, telegramLink);
+
         stickerPack.setStickers(stickerList);
         return stickerPack;
     }

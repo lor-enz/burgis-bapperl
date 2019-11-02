@@ -47,10 +47,10 @@ public class StickerContentProvider extends ContentProvider {
     public static final String PUBLISHER_WEBSITE = "sticker_pack_publisher_website";
     public static final String PRIVACY_POLICY_WEBSITE = "sticker_pack_privacy_policy_website";
     public static final String LICENSE_AGREENMENT_WEBSITE = "sticker_pack_license_agreement_website";
-
     public static final String STICKER_FILE_NAME_IN_QUERY = "sticker_file_name";
     public static final String STICKER_FILE_EMOJI_IN_QUERY = "sticker_emoji";
     public static final String CONTENT_FILE_NAME = "contents.json";
+    public static final String TELEGRAM_LINK = "sticker_pack_telegram_link";
 
     public static Uri AUTHORITY_URI = new Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority(BuildConfig.CONTENT_PROVIDER_AUTHORITY).appendPath(StickerContentProvider.METADATA).build();
 
@@ -187,7 +187,8 @@ public class StickerContentProvider extends ContentProvider {
                         PUBLISHER_EMAIL,
                         PUBLISHER_WEBSITE,
                         PRIVACY_POLICY_WEBSITE,
-                        LICENSE_AGREENMENT_WEBSITE
+                        LICENSE_AGREENMENT_WEBSITE,
+                        TELEGRAM_LINK
                 });
         for (StickerPack stickerPack : stickerPackList) {
             MatrixCursor.RowBuilder builder = cursor.newRow();
@@ -201,6 +202,7 @@ public class StickerContentProvider extends ContentProvider {
             builder.add(stickerPack.publisherWebsite);
             builder.add(stickerPack.privacyPolicyWebsite);
             builder.add(stickerPack.licenseAgreementWebsite);
+            builder.add(stickerPack.telegramLink);
         }
         cursor.setNotificationUri(Objects.requireNonNull(getContext()).getContentResolver(), uri);
         return cursor;

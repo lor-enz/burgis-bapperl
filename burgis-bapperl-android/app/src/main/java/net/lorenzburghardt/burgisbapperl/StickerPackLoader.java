@@ -36,6 +36,7 @@ import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_P
 import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_PACK_IDENTIFIER_IN_QUERY;
 import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_PACK_NAME_IN_QUERY;
 import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.STICKER_PACK_PUBLISHER_IN_QUERY;
+import static net.lorenzburghardt.burgisbapperl.StickerContentProvider.TELEGRAM_LINK;
 
 public class StickerPackLoader {
 
@@ -99,10 +100,12 @@ public class StickerPackLoader {
             final String androidPlayStoreLink = cursor.getString(cursor.getColumnIndexOrThrow(ANDROID_APP_DOWNLOAD_LINK_IN_QUERY));
             final String iosAppLink = cursor.getString(cursor.getColumnIndexOrThrow(IOS_APP_DOWNLOAD_LINK_IN_QUERY));
             final String publisherEmail = cursor.getString(cursor.getColumnIndexOrThrow(PUBLISHER_EMAIL));
+            final String telegramLink = cursor.getString(cursor.getColumnIndexOrThrow(TELEGRAM_LINK));
             final String publisherWebsite = cursor.getString(cursor.getColumnIndexOrThrow(PUBLISHER_WEBSITE));
             final String privacyPolicyWebsite = cursor.getString(cursor.getColumnIndexOrThrow(PRIVACY_POLICY_WEBSITE));
             final String licenseAgreementWebsite = cursor.getString(cursor.getColumnIndexOrThrow(LICENSE_AGREENMENT_WEBSITE));
-            final StickerPack stickerPack = new StickerPack(identifier, name, publisher, trayImage, publisherEmail, publisherWebsite, privacyPolicyWebsite, licenseAgreementWebsite);
+
+            final StickerPack stickerPack = new StickerPack(identifier, name, publisher, trayImage, publisherEmail, publisherWebsite, privacyPolicyWebsite, licenseAgreementWebsite, telegramLink);
             stickerPack.setAndroidPlayStoreLink(androidPlayStoreLink);
             stickerPack.setIosAppStoreLink(iosAppLink);
             stickerPackList.add(stickerPack);

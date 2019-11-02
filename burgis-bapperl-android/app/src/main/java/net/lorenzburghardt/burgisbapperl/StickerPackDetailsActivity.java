@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.burgisbapperl.R;
 
@@ -37,6 +38,7 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
     public static final String EXTRA_STICKER_PACK_NAME = "sticker_pack_name";
 
     public static final String EXTRA_STICKER_PACK_WEBSITE = "sticker_pack_website";
+    public static final String EXTRA_STICKER_PACK_TELEGRAM_LINK = "sticker_pack_telegram_link";
     public static final String EXTRA_STICKER_PACK_EMAIL = "sticker_pack_email";
     public static final String EXTRA_STICKER_PACK_PRIVACY_POLICY = "sticker_pack_privacy_policy";
     public static final String EXTRA_STICKER_PACK_LICENSE_AGREEMENT = "sticker_pack_license_agreement";
@@ -48,93 +50,17 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
     private GridLayoutManager layoutManager;
     private StickerPreviewAdapter stickerPreviewAdapter;
     private int numColumns;
-    private View addButton;
-    private View alreadyAddedText;
-    private StickerPack stickerPack;
-    private View divider;
-    private WhiteListCheckAsyncTask whiteListCheckAsyncTask;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sticker_pack_details);
-        boolean showUpButton = getIntent().getBooleanExtra(EXTRA_SHOW_UP_BUTTON, false);
-        stickerPack = getIntent().getParcelableExtra(EXTRA_STICKER_PACK_DATA);
-        TextView packNameTextView = findViewById(R.id.pack_name);
-        TextView packPublisherTextView = findViewById(R.id.author);
-        ImageView packTrayIcon = findViewById(R.id.tray_image);
-        TextView packSizeTextView = findViewById(R.id.pack_size);
-
-        addButton = findViewById(R.id.add_to_whatsapp_button);
-        alreadyAddedText = findViewById(R.id.already_added_text);
-        layoutManager = new GridLayoutManager(this, 1);
-        recyclerView = findViewById(R.id.sticker_list);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(pageLayoutListener);
-        recyclerView.addOnScrollListener(dividerScrollListener);
-        divider = findViewById(R.id.divider);
-        if (stickerPreviewAdapter == null) {
-            stickerPreviewAdapter = new StickerPreviewAdapter(getLayoutInflater(), R.drawable.sticker_error, getResources().getDimensionPixelSize(R.dimen.sticker_pack_details_image_size), getResources().getDimensionPixelSize(R.dimen.sticker_pack_details_image_padding), stickerPack);
-            recyclerView.setAdapter(stickerPreviewAdapter);
-        }
-        packNameTextView.setText(stickerPack.name);
-        packPublisherTextView.setText(stickerPack.publisher);
-        packTrayIcon.setImageURI(StickerPackLoader.getStickerAssetUri(stickerPack.identifier, stickerPack.trayImageFile));
-        packSizeTextView.setText(Formatter.formatShortFileSize(this, stickerPack.getTotalSize()));
-        addButton.setOnClickListener(v -> addStickerPackToWhatsApp(stickerPack.identifier, stickerPack.name));
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(showUpButton);
-            getSupportActionBar().setTitle(showUpButton ? getResources().getString(R.string.title_activity_sticker_pack_details_multiple_pack) : getResources().getQuantityString(R.plurals.title_activity_sticker_packs_list, 1));
-        }
-    }
-
-
-    private void launchInfoActivity(String publisherWebsite, String publisherEmail, String privacyPolicyWebsite, String licenseAgreementWebsite, String trayIconUriString) {
-        Intent intent = new Intent(StickerPackDetailsActivity.this, StickerPackInfoActivity.class);
-        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_ID, stickerPack.identifier);
-        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_WEBSITE, publisherWebsite);
-        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_EMAIL, publisherEmail);
-        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_PRIVACY_POLICY, privacyPolicyWebsite);
-        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_LICENSE_AGREEMENT, licenseAgreementWebsite);
-        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_TRAY_ICON, trayIconUriString);
-        startActivity(intent);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_info && stickerPack != null) {
-            Uri trayIconUri = StickerPackLoader.getStickerAssetUri(stickerPack.identifier, stickerPack.trayImageFile);
-            launchInfoActivity(stickerPack.publisherWebsite, stickerPack.publisherEmail, stickerPack.privacyPolicyWebsite, stickerPack.licenseAgreementWebsite, trayIconUri.toString());
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
     private final ViewTreeObserver.OnGlobalLayoutListener pageLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @Override
         public void onGlobalLayout() {
             setNumColumns(recyclerView.getWidth() / recyclerView.getContext().getResources().getDimensionPixelSize(R.dimen.sticker_pack_details_image_size));
         }
     };
-
-    private void setNumColumns(int numColumns) {
-        if (this.numColumns != numColumns) {
-            layoutManager.setSpanCount(numColumns);
-            this.numColumns = numColumns;
-            if (stickerPreviewAdapter != null) {
-                stickerPreviewAdapter.notifyDataSetChanged();
-            }
-        }
-    }
-
+    private View addToWhatsappButton;
+    private View addToTelegramButton;
+    private View alreadyAddedText;
+    private StickerPack stickerPack;
+    private View divider;
     private final RecyclerView.OnScrollListener dividerScrollListener = new RecyclerView.OnScrollListener() {
         @Override
         public void onScrollStateChanged(@NonNull final RecyclerView recyclerView, final int newState) {
@@ -155,6 +81,96 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
             }
         }
     };
+    private WhiteListCheckAsyncTask whiteListCheckAsyncTask;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.sticker_pack_details);
+        boolean showUpButton = getIntent().getBooleanExtra(EXTRA_SHOW_UP_BUTTON, false);
+        stickerPack = getIntent().getParcelableExtra(EXTRA_STICKER_PACK_DATA);
+        TextView packNameTextView = findViewById(R.id.pack_name);
+        TextView packPublisherTextView = findViewById(R.id.author);
+        ImageView packTrayIcon = findViewById(R.id.tray_image);
+        TextView packSizeTextView = findViewById(R.id.pack_size);
+
+
+        alreadyAddedText = findViewById(R.id.already_added_text);
+        layoutManager = new GridLayoutManager(this, 1);
+        recyclerView = findViewById(R.id.sticker_list);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(pageLayoutListener);
+        recyclerView.addOnScrollListener(dividerScrollListener);
+        divider = findViewById(R.id.divider);
+        if (stickerPreviewAdapter == null) {
+            stickerPreviewAdapter = new StickerPreviewAdapter(getLayoutInflater(), R.drawable.sticker_error, getResources().getDimensionPixelSize(R.dimen.sticker_pack_details_image_size), getResources().getDimensionPixelSize(R.dimen.sticker_pack_details_image_padding), stickerPack);
+            recyclerView.setAdapter(stickerPreviewAdapter);
+        }
+        packNameTextView.setText(stickerPack.name);
+        packPublisherTextView.setText(stickerPack.publisher);
+        packTrayIcon.setImageURI(StickerPackLoader.getStickerAssetUri(stickerPack.identifier, stickerPack.trayImageFile));
+        packSizeTextView.setText(Formatter.formatShortFileSize(this, stickerPack.getTotalSize()));
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(showUpButton);
+            getSupportActionBar().setTitle(showUpButton ? getResources().getString(R.string.title_activity_sticker_pack_details_multiple_pack) : getResources().getQuantityString(R.plurals.title_activity_sticker_packs_list, 1));
+        }
+
+        // Configure WhatsApp and Telegram Buttons - Lorenz
+        addToWhatsappButton = findViewById(R.id.add_to_whatsapp_button);
+        addToTelegramButton = findViewById(R.id.add_to_telegram_button);
+
+
+        addToWhatsappButton.setOnClickListener(v -> addStickerPackToWhatsApp(stickerPack.identifier, stickerPack.name));
+        addToTelegramButton.setOnClickListener(v -> addStickerPackToTelegram(stickerPack.telegramLink));
+    }
+
+    public void addStickerPackToTelegram(String telegramLink) {
+        try {
+            StickerPackDetailsActivity.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(telegramLink)));
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.telegram_error), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    private void launchInfoActivity(String publisherWebsite, String publisherEmail, String privacyPolicyWebsite, String licenseAgreementWebsite, String trayIconUriString, String telegram_link) {
+        Intent intent = new Intent(StickerPackDetailsActivity.this, StickerPackInfoActivity.class);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_ID, stickerPack.identifier);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_WEBSITE, publisherWebsite);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_TELEGRAM_LINK, telegram_link);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_EMAIL, publisherEmail);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_PRIVACY_POLICY, privacyPolicyWebsite);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_LICENSE_AGREEMENT, licenseAgreementWebsite);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_TRAY_ICON, trayIconUriString);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_info && stickerPack != null) {
+            Uri trayIconUri = StickerPackLoader.getStickerAssetUri(stickerPack.identifier, stickerPack.trayImageFile);
+            launchInfoActivity(stickerPack.publisherWebsite, stickerPack.publisherEmail, stickerPack.privacyPolicyWebsite, stickerPack.licenseAgreementWebsite, trayIconUri.toString(), stickerPack.telegramLink);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setNumColumns(int numColumns) {
+        if (this.numColumns != numColumns) {
+            layoutManager.setSpanCount(numColumns);
+            this.numColumns = numColumns;
+            if (stickerPreviewAdapter != null) {
+                stickerPreviewAdapter.notifyDataSetChanged();
+            }
+        }
+    }
 
     @Override
     protected void onResume() {
@@ -173,10 +189,10 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
 
     private void updateAddUI(Boolean isWhitelisted) {
         if (isWhitelisted) {
-            addButton.setVisibility(View.GONE);
+            addToWhatsappButton.setVisibility(View.GONE);
             alreadyAddedText.setVisibility(View.VISIBLE);
         } else {
-            addButton.setVisibility(View.VISIBLE);
+            addToWhatsappButton.setVisibility(View.VISIBLE);
             alreadyAddedText.setVisibility(View.GONE);
         }
     }

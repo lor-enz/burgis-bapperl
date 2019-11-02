@@ -7,6 +7,8 @@
     <string name="more_info_button">More info about sticker pack</string>
     <!-- Text to be shown on the button that user can click to add the sticker pack to WhatsApp -->
     <string name="add_to_whatsapp">Add to WhatsApp</string>
+    <!-- Text to be shown on the button that user can click to add the sticker pack to Telegram-->
+    <string name="add_to_telegram">Add to Telegram</string>
     <!-- Content Description for the plus button shown on sticker pack list, that allows user to add sticker pack to WhatsApp -->
     <string name="add_button_content_description">Add sticker pack to WhatsApp</string>
     <!-- Title of the sticker pack list activity page in case the app contains multiple sticker packs, the singular string will be used when there is only one pack in the app -->
@@ -38,4 +40,5 @@
     <string name="add_pack_fail_prompt_update_play_link">Update</string>
     <!-- Toast text when we could not take user to play store because they don't have Google Play app installed -->
     <string name="cannot_find_play_store">Google Play is not installed on the device.</string>
+    <string name="telegram_error">Failed to open Telegram Link :(</string>
 </resources>

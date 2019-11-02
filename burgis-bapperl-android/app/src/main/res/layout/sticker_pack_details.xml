@@ -141,4 +141,37 @@
                 android:text="@string/add_to_whatsapp" />
         </FrameLayout>
     </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginEnd="@dimen/preview_side_margin"
+        android:layout_marginLeft="@dimen/preview_side_margin"
+        android:layout_marginRight="@dimen/preview_side_margin"
+        android:layout_marginStart="@dimen/preview_side_margin"
+        android:layout_height="60dp">
+
+        <FrameLayout
+            android:id="@+id/add_to_telegram_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:background="@drawable/btn_light_blue"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                style="@style/StickerPreviewButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:drawablePadding="8dp"
+                android:drawableStart="@drawable/telegram_icon"
+                android:focusable="false"
+                android:foreground="@android:color/transparent"
+                android:text="@string/add_to_telegram" />
+        </FrameLayout>
+    </FrameLayout>
 </LinearLayout>

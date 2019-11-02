@@ -22,6 +22,7 @@ class StickerPack implements Parcelable {
     final String publisherWebsite;
     final String privacyPolicyWebsite;
     final String licenseAgreementWebsite;
+    final String telegramLink;
 
     String iosAppStoreLink;
     private List<Sticker> stickers;
@@ -29,12 +30,13 @@ class StickerPack implements Parcelable {
     String androidPlayStoreLink;
     private boolean isWhitelisted;
 
-    StickerPack(String identifier, String name, String publisher, String trayImageFile, String publisherEmail, String publisherWebsite, String privacyPolicyWebsite, String licenseAgreementWebsite) {
+    StickerPack(String identifier, String name, String publisher, String trayImageFile, String publisherEmail, String publisherWebsite, String privacyPolicyWebsite, String licenseAgreementWebsite, String telegramLink) {
         this.identifier = identifier;
         this.name = name;
         this.publisher = publisher;
         this.trayImageFile = trayImageFile;
         this.publisherEmail = publisherEmail;
+        this.telegramLink = telegramLink;
         this.publisherWebsite = publisherWebsite;
         this.privacyPolicyWebsite = privacyPolicyWebsite;
         this.licenseAgreementWebsite = licenseAgreementWebsite;
@@ -54,6 +56,7 @@ class StickerPack implements Parcelable {
         publisher = in.readString();
         trayImageFile = in.readString();
         publisherEmail = in.readString();
+        telegramLink = in.readString();
         publisherWebsite = in.readString();
         privacyPolicyWebsite = in.readString();
         licenseAgreementWebsite = in.readString();
@@ -112,6 +115,7 @@ class StickerPack implements Parcelable {
         dest.writeString(publisher);
         dest.writeString(trayImageFile);
         dest.writeString(publisherEmail);
+        dest.writeString(telegramLink);
         dest.writeString(publisherWebsite);
         dest.writeString(privacyPolicyWebsite);
         dest.writeString(licenseAgreementWebsite);
