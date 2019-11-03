@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Burgis Bapperl - WAStickerApps</string>
     <string name="add_button_content_description">Sticker Paket zu WhatsApp hinzufügen</string>
     <string name="add_pack_fail_prompt_update_play_link">Aktualiseren</string>
     <string name="add_to_whatsapp">Zu WhatsApp hinzufügen</string>
