@@ -71,7 +71,9 @@ class ContentFileParser {
         String publisher = null;
         String trayImageFile = null;
         String publisherEmail = null;
+        // lorenz-edit
         String telegramLink = null;
+        String signalLink = null;
         String publisherWebsite = null;
         String privacyPolicyWebsite = null;
         String licenseAgreementWebsite = null;
@@ -94,8 +96,12 @@ class ContentFileParser {
                 case "publisher_email":
                     publisherEmail = reader.nextString();
                     break;
+                // lorenz-edit
                 case "telegram_link":
                     telegramLink = reader.nextString();
+                    break;
+                case "signal_link":
+                    signalLink = reader.nextString();
                     break;
                 case "publisher_website":
                     publisherWebsite = reader.nextString();
@@ -132,7 +138,8 @@ class ContentFileParser {
             throw new IllegalStateException("identifier should not contain .. or / to prevent directory traversal");
         }
         reader.endObject();
-        final StickerPack stickerPack = new StickerPack(identifier, name, publisher, trayImageFile, publisherEmail, publisherWebsite, privacyPolicyWebsite, licenseAgreementWebsite, telegramLink);
+        // lorenz-edit
+        final StickerPack stickerPack = new StickerPack(identifier, name, publisher, trayImageFile, publisherEmail, publisherWebsite, privacyPolicyWebsite, licenseAgreementWebsite, telegramLink, signalLink);
 
         stickerPack.setStickers(stickerList);
         return stickerPack;

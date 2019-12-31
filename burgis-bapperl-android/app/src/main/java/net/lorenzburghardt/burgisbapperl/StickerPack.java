@@ -22,7 +22,9 @@ class StickerPack implements Parcelable {
     final String publisherWebsite;
     final String privacyPolicyWebsite;
     final String licenseAgreementWebsite;
+    // lorenz-edit
     final String telegramLink;
+    final String signalLink;
 
     String iosAppStoreLink;
     private List<Sticker> stickers;
@@ -30,13 +32,16 @@ class StickerPack implements Parcelable {
     String androidPlayStoreLink;
     private boolean isWhitelisted;
 
-    StickerPack(String identifier, String name, String publisher, String trayImageFile, String publisherEmail, String publisherWebsite, String privacyPolicyWebsite, String licenseAgreementWebsite, String telegramLink) {
+    // lorenz-edit
+    StickerPack(String identifier, String name, String publisher, String trayImageFile, String publisherEmail, String publisherWebsite, String privacyPolicyWebsite, String licenseAgreementWebsite, String telegramLink, String signalLink) {
         this.identifier = identifier;
         this.name = name;
         this.publisher = publisher;
         this.trayImageFile = trayImageFile;
         this.publisherEmail = publisherEmail;
+        // lorenz-edit
         this.telegramLink = telegramLink;
+        this.signalLink = signalLink;
         this.publisherWebsite = publisherWebsite;
         this.privacyPolicyWebsite = privacyPolicyWebsite;
         this.licenseAgreementWebsite = licenseAgreementWebsite;
@@ -56,7 +61,9 @@ class StickerPack implements Parcelable {
         publisher = in.readString();
         trayImageFile = in.readString();
         publisherEmail = in.readString();
+        // lorenz-edit
         telegramLink = in.readString();
+        signalLink = in.readString();
         publisherWebsite = in.readString();
         privacyPolicyWebsite = in.readString();
         licenseAgreementWebsite = in.readString();
@@ -116,6 +123,7 @@ class StickerPack implements Parcelable {
         dest.writeString(trayImageFile);
         dest.writeString(publisherEmail);
         dest.writeString(telegramLink);
+        dest.writeString(signalLink);
         dest.writeString(publisherWebsite);
         dest.writeString(privacyPolicyWebsite);
         dest.writeString(licenseAgreementWebsite);

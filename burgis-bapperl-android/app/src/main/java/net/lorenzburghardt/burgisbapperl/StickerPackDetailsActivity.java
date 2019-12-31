@@ -38,7 +38,9 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
     public static final String EXTRA_STICKER_PACK_NAME = "sticker_pack_name";
 
     public static final String EXTRA_STICKER_PACK_WEBSITE = "sticker_pack_website";
+    // lorenz-edit
     public static final String EXTRA_STICKER_PACK_TELEGRAM_LINK = "sticker_pack_telegram_link";
+    public static final String EXTRA_STICKER_PACK_SIGNAL_LINK = "sticker_pack_signal_link";
     public static final String EXTRA_STICKER_PACK_EMAIL = "sticker_pack_email";
     public static final String EXTRA_STICKER_PACK_PRIVACY_POLICY = "sticker_pack_privacy_policy";
     public static final String EXTRA_STICKER_PACK_LICENSE_AGREEMENT = "sticker_pack_license_agreement";
@@ -58,6 +60,7 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
     };
     private View addToWhatsappButton;
     private View addToTelegramButton;
+    private View addToSignalButton;
     private View alreadyAddedText;
     private StickerPack stickerPack;
     private View divider;
@@ -116,15 +119,18 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
             getSupportActionBar().setTitle(showUpButton ? getResources().getString(R.string.title_activity_sticker_pack_details_multiple_pack) : getResources().getQuantityString(R.plurals.title_activity_sticker_packs_list, 1));
         }
 
-        // Configure WhatsApp and Telegram Buttons - Lorenz
+        // Configure Messenger Buttons - Lorenz
         addToWhatsappButton = findViewById(R.id.add_to_whatsapp_button);
         addToTelegramButton = findViewById(R.id.add_to_telegram_button);
+        addToSignalButton = findViewById(R.id.add_to_signal_button);
 
-
+        // lorenz-edit
         addToWhatsappButton.setOnClickListener(v -> addStickerPackToWhatsApp(stickerPack.identifier, stickerPack.name));
         addToTelegramButton.setOnClickListener(v -> addStickerPackToTelegram(stickerPack.telegramLink));
+        addToSignalButton.setOnClickListener(v -> addStickerPackToSignal(stickerPack.signalLink));
     }
 
+    // lorenz-edit
     public void addStickerPackToTelegram(String telegramLink) {
         try {
             StickerPackDetailsActivity.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(telegramLink)));
@@ -133,12 +139,23 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
             e.printStackTrace();
         }
     }
-
-    private void launchInfoActivity(String publisherWebsite, String publisherEmail, String privacyPolicyWebsite, String licenseAgreementWebsite, String trayIconUriString, String telegram_link) {
+    // lorenz-edit
+    public void addStickerPackToSignal(String signalLink) {
+        try {
+            StickerPackDetailsActivity.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(signalLink)));
+        } catch (Exception e) {
+            Toast.makeText(this, getString(R.string.signal_error), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+    // lorenz-edit
+    private void launchInfoActivity(String publisherWebsite, String publisherEmail, String privacyPolicyWebsite, String licenseAgreementWebsite, String trayIconUriString, String telegram_link, String signal_link) {
         Intent intent = new Intent(StickerPackDetailsActivity.this, StickerPackInfoActivity.class);
         intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_ID, stickerPack.identifier);
         intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_WEBSITE, publisherWebsite);
+        // lorenz-edit
         intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_TELEGRAM_LINK, telegram_link);
+        intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_SIGNAL_LINK, signal_link);
         intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_EMAIL, publisherEmail);
         intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_PRIVACY_POLICY, privacyPolicyWebsite);
         intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_LICENSE_AGREEMENT, licenseAgreementWebsite);
@@ -156,7 +173,8 @@ public class StickerPackDetailsActivity extends AddStickerPackActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_info && stickerPack != null) {
             Uri trayIconUri = StickerPackLoader.getStickerAssetUri(stickerPack.identifier, stickerPack.trayImageFile);
-            launchInfoActivity(stickerPack.publisherWebsite, stickerPack.publisherEmail, stickerPack.privacyPolicyWebsite, stickerPack.licenseAgreementWebsite, trayIconUri.toString(), stickerPack.telegramLink);
+            // lorenz-edit
+            launchInfoActivity(stickerPack.publisherWebsite, stickerPack.publisherEmail, stickerPack.privacyPolicyWebsite, stickerPack.licenseAgreementWebsite, trayIconUri.toString(), stickerPack.telegramLink, stickerPack.signalLink);
             return true;
         }
         return super.onOptionsItemSelected(item);

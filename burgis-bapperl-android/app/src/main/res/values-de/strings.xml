@@ -17,6 +17,8 @@
     <string name="more_info_button">Mehr Informationen zum Sticker Paket</string>
     <string name="send_email">Email senden</string>
     <string name="tray_image_content_description">Sticker Paket Tray Bild</string>
-    <string name="add_to_telegram">Zu Telegram hinzufügen</string>
+    <string name="add_to_telegram">In Telegram öffnen</string>
     <string name="telegram_error">Beim öffnen des Telegram Links ist etwas schiefgelaufen :(</string>
+    <string name="add_to_signal">In Signal öffnen</string>
+    <string name="signal_error">Beim öffnen des Signal Links ist etwas schiefgelaufen :(</string>
 </resources>
